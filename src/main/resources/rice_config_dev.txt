@@ -1,0 +1,5 @@
+#主要配置
+jdbcUrl=jdbc:mysql://localhost/rice?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user=fancye
+password=fancye
+devMode=true
