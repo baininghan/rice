@@ -44,6 +44,7 @@ public class RiceConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add(new AdminRoutes());
         me.add(new APIRoutes());
+        /*me.add(new FrontRoutes());*/
     }
 
     @Override

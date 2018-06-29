@@ -1,0 +1,33 @@
+#@admin_layout()
+#define admin_body()
+<table class="layui-hide" id="user-table" lay-data="{url='/user/list', page=true, id='id'}">
+    <thead>
+        <tr>
+            <th lay-data="{type:'checkbox', fixed:'left'}"></th>
+            <th lay-data="{field:'id', sort: true, fixed: true}">ID</th>
+            <th lay-data="{field:'name'">姓名</th>
+            <th lay-data="{field:'nickName'">昵称</th>
+            <th lay-data="{field:'sex'">昵称</th>
+            <th lay-data="{field:'tel'">电话号码</th>
+        </tr>
+    </thead>
+</table>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        /*table.render({
+            elem: '#user-table',
+            url: '/user/list',
+            cols: [[
+                {field: 'id', title: 'ID'},
+                {field: 'name', title: '姓名'},
+                {field: 'nickName', title: '昵称'},
+                {field: 'sex', title: '性别'},
+                {field: 'tel', title: '电话}
+            ]],
+            /!*data: null,*!/
+            page: true
+        });*/
+    });
+</script>
+#end

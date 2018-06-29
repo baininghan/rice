@@ -1,4 +1,4 @@
-#define admin_laylout()
+#define admin_layout()
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>后台管理</title>
     <link rel="stylesheet" href="/assets/layui/css/layui.css">
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     #include("_admin_header.html")
     #@admin_header()
 
-    #include("_admin_sider.html")
-    #@admin_sider()
+    #include("_admin_side.html")
+    #@admin_side()
 
-    #include("_admin_body.html")
     #@admin_body()
 
     #include("_admin_footer.html")
