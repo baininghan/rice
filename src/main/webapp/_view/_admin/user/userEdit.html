@@ -1,0 +1,70 @@
+#define admin_user_edit()
+<div class="layui-row" id="user-edit" style="padding: 20px; margin: 20px">
+<form class="layui-form" action="">
+    <br>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="required" autocomplete="false" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="title" autocomplete="false" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" value="男" title="男" checked="">
+            <input type="radio" name="sex" value="女" title="女">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" lay-verify="phone" autocomplete="false" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" lay-verify="email" autocomplete="false" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-input-inline">
+            <select name="role">
+                <option>请选择角色</option>
+                <option>客户经理</option>
+                <option>客户主管</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">机构</label>
+        <div class="layui-input-inline">
+            <select name="bank">
+                <option>请选择机构</option>
+                <option>一级机构</option>
+                <option>二级机构</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-normal">保存</button>
+        </div>
+    </div>
+</form>
+</div>
+#end
