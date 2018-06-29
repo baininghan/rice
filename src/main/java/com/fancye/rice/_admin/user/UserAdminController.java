@@ -18,13 +18,28 @@ public class UserAdminController extends Controller {
 
     static UserService s = UserService.me;
 
+    public void init() {
+        for (int i = 0; i < 20; i++) {
+            User u = new User();
+            u.setName("test" + i);
+            u.setNickname("test" + i);
+            u.setSex(1);
+            u.setTel(123456);
+            u.setEmail("test@test.com");
+
+            u.save();
+        }
+
+        renderNull();
+    }
+
     public void index() {
         render("user.html");
     }
 
     public void list() {
-        Integer pageNumber = getParaToInt("pageNumber", 1);
-        Integer pageSize = getParaToInt("pageSize", 10);
+        Integer pageNumber = getParaToInt("page", 1);
+        Integer pageSize = getParaToInt("limit", 10);
 
         Page<User> p = s.paginate(pageNumber, pageSize);
         renderJson(Format.layuiPage(p));

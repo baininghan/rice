@@ -1,4 +1,4 @@
-package com.jfinal.club.common.model.base;
+package com.fancye.rice.common.model.base;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.IBean;
@@ -33,12 +33,12 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return getStr("nickname");
 	}
 
-	public void setSex(java.lang.String sex) {
+	public void setSex(java.lang.Integer sex) {
 		set("sex", sex);
 	}
 	
-	public java.lang.String getSex() {
-		return getStr("sex");
+	public java.lang.Integer getSex() {
+		return getInt("sex");
 	}
 
 	public void setTel(java.lang.Integer tel) {

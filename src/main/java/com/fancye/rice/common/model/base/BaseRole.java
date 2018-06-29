@@ -1,4 +1,4 @@
-package com.jfinal.club.common.model.base;
+package com.fancye.rice.common.model.base;
 
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.IBean;

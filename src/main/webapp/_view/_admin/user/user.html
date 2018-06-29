@@ -1,33 +1,80 @@
 #@admin_layout()
 #define admin_body()
-<table class="layui-hide" id="user-table" lay-data="{url='/user/list', page=true, id='id'}">
-    <thead>
-        <tr>
-            <th lay-data="{type:'checkbox', fixed:'left'}"></th>
-            <th lay-data="{field:'id', sort: true, fixed: true}">ID</th>
-            <th lay-data="{field:'name'">姓名</th>
-            <th lay-data="{field:'nickName'">昵称</th>
-            <th lay-data="{field:'sex'">昵称</th>
-            <th lay-data="{field:'tel'">电话号码</th>
-        </tr>
-    </thead>
-</table>
+<div class="layui-btn-group user-list">
+    <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
+    <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
+    <button class="layui-btn" data-type="isAll">验证是否全选</button>
+</div>
+
+<table id="user-list" lay-filter="test"></table>
+
+<script type="text/html" id="barOpt">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+#end
+
+#define admin_script()
 <script>
     layui.use('table', function () {
         var table = layui.table;
-        /*table.render({
-            elem: '#user-table',
+
+        table.render({
+            elem: '#user-list',
             url: '/user/list',
             cols: [[
-                {field: 'id', title: 'ID'},
+                {type:'checkbox'},
+                {field: 'id', title: 'ID', sort: true},
                 {field: 'name', title: '姓名'},
-                {field: 'nickName', title: '昵称'},
+                {field: 'nickname', title: '昵称'},
                 {field: 'sex', title: '性别'},
-                {field: 'tel', title: '电话}
+                {field: 'tel', title: '电话'},
+                {title: '操作', fixed: 'right', width:178, align:'center', toolbar: '#barOpt'}
             ]],
-            /!*data: null,*!/
+            cellMinWidth: 80,
             page: true
-        });*/
+        });
+
+        table.on('checkbox(test)', function (obj) {
+            console.log(obj);
+        });
+
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                layer.msg("ID:" + data.id + "的查看操作！");
+            } else if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            } else if (obj.event === 'del') {
+                layer.confirm('确定删除？', function (index) {
+                   obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+
+        var $ = layui.$, active = {
+            getCheckData: function(){ //获取选中数据
+                var checkStatus = table.checkStatus('id')
+                    ,data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+            ,getCheckLength: function(){ //获取选中数目
+                var checkStatus = table.checkStatus('id')
+                    ,data = checkStatus.data;
+                layer.msg('选中了：'+ data.length + ' 个');
+            }
+            ,isAll: function(){ //验证是否全选
+                var checkStatus = table.checkStatus('id');
+                layer.msg(checkStatus.isAll ? '全选': '未全选')
+            }
+        };
+
+        $('.user-list .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
     });
 </script>
 #end

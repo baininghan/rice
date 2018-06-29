@@ -7,6 +7,7 @@ package com.fancye.rice.common;
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.wall.WallFilter;
 import com.fancye.rice.common.kit.DruidKit;
+import com.fancye.rice.common.model._MappingKit;
 import com.fancye.rice.common.routes.APIRoutes;
 import com.fancye.rice.common.routes.AdminRoutes;
 import com.jfinal.config.*;
@@ -69,6 +70,8 @@ public class RiceConfig extends JFinalConfig {
         arp.setTransactionLevel(Connection.TRANSACTION_READ_COMMITTED);
         arp.setContainerFactory(new CaseInsensitiveContainerFactory(true));
         arp.setShowSql(p.getBoolean("devMode", false));
+        _MappingKit.mapping(arp);
+        me.add(arp);
 
         me.add(new EhCachePlugin());
         me.add(new Cron4jPlugin());

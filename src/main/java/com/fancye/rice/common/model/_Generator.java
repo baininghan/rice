@@ -56,7 +56,7 @@ public class _Generator {
 
 	public static void main(String[] args) {
 		// base model 所使用的包名
-		String baseModelPackageName = "com.jfinal.club.common.model.base";
+		String baseModelPackageName = "com.fancye.rice.common.model.base";
 		// base model 文件保存路径
 		String baseModelOutputDir = PathKit.getWebRootPath()
 				+ "/src/main/java/com/fancye/rice/common/model/base";
@@ -77,7 +77,7 @@ public class _Generator {
 			gen.addExcludedTable(table.trim());
 		}
 		// 设置是否在 Model 中生成 dao 对象
-		gen.setGenerateDaoInModel(false);
+		gen.setGenerateDaoInModel(true);
 		// 设置是否生成字典文件
 		gen.setGenerateDataDictionary(false);
 		// 设置需要被移除的表名前缀用于生成modelName。例如表名 "osc_user"，移除前缀 "osc_"后生成的model名为 "User"而非 OscUser
