@@ -4,6 +4,7 @@
  */
 package com.fancye.rice.common.routes;
 
+import com.fancye.rice._admin.bank.BankAdminController;
 import com.fancye.rice._admin.index.IndexAdminController;
 import com.fancye.rice._admin.user.UserAdminController;
 import com.jfinal.config.Routes;
@@ -21,5 +22,6 @@ public class AdminRoutes extends Routes {
 
         add("/admin", IndexAdminController.class, "/index");
         add("/user", UserAdminController.class, "/user");
+        add("/bank", BankAdminController.class, "/bank");
     }
 }
