@@ -49,4 +49,12 @@ public abstract class BaseBank<M extends BaseBank<M>> extends Model<M> implement
 		return getStr("parBankName");
 	}
 
+	public void setParent(java.lang.Integer parent) {
+		set("parent", parent);
+	}
+	
+	public java.lang.Integer getParent() {
+		return getInt("parent");
+	}
+
 }

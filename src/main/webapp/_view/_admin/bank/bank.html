@@ -4,32 +4,19 @@
     <legend>机构树</legend>
 </fieldset>
 
-<ul id="bank-tree"></ul>
+<ul id="banktree"></ul>
 #end
 
 #define admin_script()
 <script>
     layui.use('tree', function () {
-        var tree = layui.tree;
 
-        tree({
-            elem: 'bank-tree',
-            nodes: [{ //节点
-                name: '父节点1'
-                ,children: [{
-                    name: '子节点11'
-                },{
-                    name: '子节点12'
-                }]
-            },{
-                name: '父节点2（可以点左侧箭头，也可以双击标题）'
-                ,children: [{
-                    name: '子节点21'
-                    ,children: [{
-                        name: '子节点211'
-                    }]
-                }]
-            }]
+        layui.tree({
+            elem: '#banktree',
+            nodes: #(nodes),
+            click: function(node) {
+                console.log(node);
+            }
         });
     });
 </script>

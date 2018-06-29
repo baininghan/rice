@@ -15,10 +15,14 @@
 </script>
 #end
 
+#include("userEdit.html")
+#@admin_user_edit()
+
 #define admin_script()
 <script>
-    layui.use('table', function () {
+    layui.use(['table', 'layer'], function () {
         var table = layui.table;
+        var layer = layui.layer;
 
         table.render({
             elem: '#user-list',
@@ -42,10 +46,16 @@
 
         table.on('tool(test)', function (obj) {
             var data = obj.data;
+
             if (obj.event === 'detail') {
                 layer.msg("ID:" + data.id + "的查看操作！");
             } else if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                layer.open({
+                    type: 1,
+                    title: '用户编辑',
+                    area:["50%"],
+                    content: $('#user-edit').html()
+                });
             } else if (obj.event === 'del') {
                 layer.confirm('确定删除？', function (index) {
                    obj.del();

@@ -4,8 +4,10 @@
  */
 package com.fancye.rice._admin.bank;
 
+import com.fancye.rice.common.kit.tree.Tree;
 import com.fancye.rice.common.model.Bank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +19,24 @@ public class BankService {
 
     public static final BankService me = new BankService();
 
-    public List<Bank> list(int parMenuId) {
-        return Bank.dao.find("select * from bank where parMenuId = ?", parMenuId);
+    public List<Bank> list(int parBankId) {
+        return Bank.dao.find("select * from bank where parBankId = ?", parBankId);
     }
 
-    public void getLayuiTreeNodes(int parMenuId) {
-        List<Bank> list = list(0);
+    public List<Tree> getLayuiTreeNodes(int parBankId) {
+        List<Bank> list = list(parBankId);
+        List<Tree> children = new ArrayList<>();
         for (Bank bank : list) {
+            Tree tree = new Tree();
+            tree.setName(bank.getName());
+            if (0 == bank.getParent()) {
+                tree.setChildren(getLayuiTreeNodes(bank.getId()));
+            }
 
+            children.add(tree);
         }
+
+        return children;
     }
 
 }
