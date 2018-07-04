@@ -2,21 +2,22 @@
 <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-        <ul class="layui-nav layui-nav-tree">
+        <ul class="layui-nav layui-nav-tree" lay-filter="nav-side">
             <li class="layui-nav-item layui-nav-itemed">
                 <a class="" href="javascript:;">系统管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/bank">机构管理</a></dd>
-                    <dd><a href="/user">用户管理</a></dd>
-                    <dd><a href="/menu">菜单管理</a></dd>
-                    <dd><a href="/role">角色管理</a></dd>
+                    <dd><a href="/admin" lay-id="index">首页</a></dd>
+                    <dd><a href="/bank" lay-id="bank">机构管理</a></dd>
+                    <dd><a href="/user" lay-id="user">用户管理</a></dd>
+                    <dd><a href="/menu" lay-id="menu">菜单管理</a></dd>
+                    <dd><a href="/role" lay-id="role">角色管理</a></dd>
                 </dl>
             </li>
 
             <li class="layui-nav-item layui-nav-itemed">
-                <a class="" href="javascript:;">其他菜单</a>
+                <a class="" href="javascript:;">例子</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">动态分配Tab</a></dd>
+                    <dd><a href="/demo/tab">选项卡</a></dd>
                 </dl>
             </li>
         </ul>

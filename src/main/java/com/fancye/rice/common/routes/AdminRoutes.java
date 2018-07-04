@@ -5,6 +5,7 @@
 package com.fancye.rice.common.routes;
 
 import com.fancye.rice._admin.bank.BankAdminController;
+import com.fancye.rice._admin.demo.DemoController;
 import com.fancye.rice._admin.index.IndexAdminController;
 import com.fancye.rice._admin.login.LoginController;
 import com.fancye.rice._admin.user.UserAdminController;
@@ -25,5 +26,9 @@ public class AdminRoutes extends Routes {
         add("/admin", IndexAdminController.class, "/index");
         add("/user", UserAdminController.class, "/user");
         add("/bank", BankAdminController.class, "/bank");
+
+
+        /* layui 示例**/
+        add("/demo", DemoController.class, "/demo");
     }
 }

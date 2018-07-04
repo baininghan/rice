@@ -20,8 +20,15 @@
     #@admin_side()
 
     <div class="layui-body">
-        <div style="padding: 15px;">
-            #@admin_body()
+        <div style="padding-left: 15px;">
+            <div class="layui-tab" lay-filter="tab-body">
+                <ul class="layui-tab-title">
+                    <li class="layui-this" lay-id="index">首页</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">#@admin_body()</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -36,10 +43,18 @@
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
         //监听导航点击
-        element.on('nav(demo)', function(elem){
-            //console.log(elem)
-            layer.msg(elem.text());
+        element.on('nav(nav-side)', function(elem){
+            console.log(elem.text());
+            //layer.msg(elem.text());
+            /*element.tabAdd('tab-body', {
+                title: 'elem.text()',
+                content: '',
+                id: ''
+            });*/
         });
+
+        //var layid = location.hash.replace(/^#/, '');
+        //element.tabChange('tab-body', layid);
     });
 </script>
 </body>
