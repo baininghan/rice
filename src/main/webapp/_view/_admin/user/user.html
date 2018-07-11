@@ -20,9 +20,11 @@
 
 #define admin_script()
 <script>
-    layui.use(['table', 'layer'], function () {
-        var table = layui.table;
-        var layer = layui.layer;
+    layui.use(['table', 'layer', 'element', 'form'], function () {
+        var table = layui.table,
+            layer = layui.layer,
+            element = layui.element,
+            form = layui.form;
 
         table.render({
             elem: '#user-list',
@@ -54,7 +56,19 @@
                     type: 1,
                     title: '用户编辑',
                     area:["50%"],
-                    content: $('#user-edit').html()
+                    content: $('#user-edit'),
+                    success: function (layero, index) {
+                        form.val('form-user-edit', {
+                            "user.id": data.id,
+                            "user.name": data.name,
+                            "user.nickname": data.nickname,
+                            "user.sex": data.sex.toString(),// Number需要转成字符串
+                            "user.tel": data.tel,
+                            "user.email": data.email,
+                            "user.roleId": data.roleid,
+                            "user.bankId": data.bankid
+                        });
+                    }
                 });
             } else if (obj.event === 'del') {
                 layer.confirm('确定删除？', function (index) {
@@ -85,6 +99,21 @@
             var type = $(this).data('type');
             active[type] ? active[type].call(this) : '';
         });
+
+        //监听提交
+        form.on('submit(from-user-submit)', function(data){
+            /*$.post({
+                url: '/user/save',
+                data: data,
+                success: function (rep) {
+                    layer.msg(JSON.stringify(data));
+                }
+            });*/
+            /*layer.msg(JSON.stringify(data));*/
+            //table.render();
+            return false;
+        });
+
     });
 </script>
 #end

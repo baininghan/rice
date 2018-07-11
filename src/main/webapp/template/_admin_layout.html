@@ -45,12 +45,12 @@
         //监听导航点击
         element.on('nav(nav-side)', function(elem){
             console.log(elem.text());
-            //layer.msg(elem.text());
-            /*element.tabAdd('tab-body', {
-                title: 'elem.text()',
+            layer.msg(elem.text());
+            element.tabAdd('tab-body', {
+                title: elem.text(),
                 content: '',
-                id: ''
-            });*/
+                id: 'tab-' + elem.text()
+            });
         });
 
         //var layid = location.hash.replace(/^#/, '');

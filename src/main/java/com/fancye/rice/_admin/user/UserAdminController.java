@@ -24,7 +24,7 @@ public class UserAdminController extends Controller {
             u.setName("test" + i);
             u.setNickname("test" + i);
             u.setSex(1);
-            u.setTel(123456);
+            u.setTel("18627596970");
             u.setEmail("test@test.com");
 
             u.save();
@@ -43,5 +43,20 @@ public class UserAdminController extends Controller {
 
         Page<User> p = s.paginate(pageNumber, pageSize);
         renderJson(Format.layuiPage(p));
+    }
+
+    public void edit() {
+        User user = getBean(User.class, "user");
+        boolean result = user.update();
+
+        String name = getPara("name");
+        String nickname = getPara("nickname");
+        String sex = getPara("sex");
+
+        render("user.html");
+    }
+
+    public void add() {
+
     }
 }

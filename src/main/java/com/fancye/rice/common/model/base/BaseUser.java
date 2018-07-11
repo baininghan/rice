@@ -41,12 +41,12 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return getInt("sex");
 	}
 
-	public void setTel(java.lang.Integer tel) {
+	public void setTel(java.lang.String tel) {
 		set("tel", tel);
 	}
 	
-	public java.lang.Integer getTel() {
-		return getInt("tel");
+	public java.lang.String getTel() {
+		return getStr("tel");
 	}
 
 	public void setEmail(java.lang.String email) {
